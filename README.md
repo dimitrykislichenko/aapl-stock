@@ -1,46 +1,55 @@
-# Getting Started with Create React App
+# Stock Price
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+The chart represents stock price of `AAPL` (Apple) for different date periods. All data is taken from [Yahoo! Finance](https://finance.yahoo.com/quote/AAPL/history/) website.
 
-## Available Scripts
+## Installation
 
-In the project directory, you can run:
+Use this command to install all dependencies.
 
-### `yarn start`
+```bash
+yarn install
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Running the app
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+You can run the app in development mode for testing or development.
 
-### `yarn test`
+```bash
+yarn start
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Build
 
-### `yarn build`
+Use build version of the app if you plan to deploy it to production. The build version will be placed in `build/` folder.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```bash
+yarn build
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Architecture
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+All data was taken from [Yahoo! Finance](https://finance.yahoo.com/quote/AAPL/history/) as `CSV` export of historical data for 1 year period. The `CSV` was converted to `JSON` using [csvjson.com](https://csvjson.com/csv2json).
 
-### `yarn eject`
+The single point of data looks like that:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```js
+{
+  Date: string;
+  Open: number;
+  High: number;
+  Low: number;
+  Close: number;
+  Volume: number;
+}
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+For MVP only price (Close) metric was used, but current dataset allow to extract more usefull information, for example we can show trading volumes and spread, which is difference between highest price and lowest price.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+For rendering the chart the [rechart.js](https://recharts.org/) library was used, which is based on popular d3.js librabry and built specificly for React.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## TODO
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+1. Show `Volume` as the metric instead of `Price`
+2. Show `Spread`, the difference between highest price and lowest (e.g. `data.High - data.Low`)
+3. Use real API to get the latest data
+4. Add unit tests
