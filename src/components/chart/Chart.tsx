@@ -66,7 +66,19 @@ export const Chart: React.FC<IChartProps> = ({ header, data }) => (
           opacity="0.4"
           stroke="#FE0F7D"
         />
-        <Tooltip labelFormatter={toLongDateFormat} />
+        <Tooltip
+          cursor={true}
+          formatter={withCurrencySymbol}
+          labelFormatter={toLongDateFormat}
+          labelStyle={{ paddingTop: 4 }}
+          contentStyle={{
+            padding: '10px 14px',
+            borderRadius: 10,
+            borderColor: '#FE0F7D',
+            color: 'black',
+          }}
+          wrapperStyle={{ top: -70, left: -10 }}
+        />
       </AreaChart>
     </ResponsiveContainer>
   </Wrapper>
