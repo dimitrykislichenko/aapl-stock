@@ -32,7 +32,7 @@ interface IRangeButtonsProps {
 
 const StyledGroupButtons = styled(GroupButtons)`
   position: absolute;
-  bottom: 45px;
+  bottom: 50px;
   left: 10px;
   z-index: 10;
 `;

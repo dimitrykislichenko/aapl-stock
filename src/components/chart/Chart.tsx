@@ -31,7 +31,7 @@ export const Chart: React.FC<IChartProps> = ({ header, data }) => (
   <Wrapper>
     <Header>{header}</Header>
     <ResponsiveContainer width="100%" height="100%">
-      <AreaChart data={data}>
+      <AreaChart data={data} margin={{ top: 0, left: 0, right: 5, bottom: 0 }}>
         <XAxis
           dataKey="Date"
           tickFormatter={toShortDateFormat}
@@ -41,6 +41,7 @@ export const Chart: React.FC<IChartProps> = ({ header, data }) => (
           interval="preserveEnd"
           tickMargin={14}
           minTickGap={80}
+          height={40}
         />
         <YAxis
           type="number"
