@@ -30,7 +30,7 @@ export const getByRange = (interval: Interval) => {
  * Fetch data for last week
  */
 export const getWeek = () => {
-  getByRange({
+  return getByRange({
     start: add(lastData, { weeks: -1 }),
     end: lastData,
   });
