@@ -1,7 +1,7 @@
 import { add, Interval, isWithinInterval } from 'date-fns';
 import data from '../data/aapl';
 
-interface IData {
+export interface IData {
   Date: number;
   Open: number;
   High: number;
