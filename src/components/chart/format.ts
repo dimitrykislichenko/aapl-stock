@@ -8,4 +8,4 @@ export const toLongDateFormat = (date: string | number) => {
   return format(new Date(date), 'yyyy-MM-dd');
 };
 
-export const withCurrencySymbol = (value: number) => `${value} $`;
+export const withCurrencySymbol = (value: number) => `${value.toFixed(2)}$`;

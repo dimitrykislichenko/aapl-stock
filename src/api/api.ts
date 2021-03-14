@@ -2,13 +2,12 @@ import { add, Interval, isWithinInterval } from 'date-fns';
 import data from '../data/aapl';
 
 export interface IData {
-  Date: number;
+  Date: string;
   Open: number;
   High: number;
   Low: number;
   Close: number;
   Volume: number;
-  OpenInt: number;
 }
 
 // Last date of current dataset
