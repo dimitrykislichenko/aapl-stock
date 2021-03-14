@@ -1,31 +1,9 @@
 import React, { useCallback } from 'react';
-import styled, { createGlobalStyle } from 'styled-components';
-import { GroupButtons } from '../components/buttons/GroupButton';
+import styled from 'styled-components';
 import { Chart } from '../components/chart/Chart';
+import { GlobalStyling } from './GlobalStyling';
 import { ERange, useData } from './hooks/useData.hook';
-
-const RANGE_OPTIONS = [
-  {
-    name: ERange.WEEK,
-    label: 'Week',
-  },
-  {
-    name: ERange.MONTH,
-    label: 'Month',
-  },
-  {
-    name: ERange.QUARTER,
-    label: 'Quarter',
-  },
-  {
-    name: ERange.YEAR,
-    label: 'Year',
-  },
-  {
-    name: ERange.MAX,
-    label: 'Max',
-  },
-];
+import { RangeButtons } from './RangeButtons';
 
 const Wrapper = styled.div`
   width: 100%;
@@ -33,6 +11,11 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  background: radial-gradient(
+    50% 50% at 50% 50%,
+    rgba(255, 0, 122, 0.4) 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
 `;
 
 const Content = styled.div`
@@ -41,26 +24,8 @@ const Content = styled.div`
   flex: 1 1 auto;
 `;
 
-const GlobalStyling = createGlobalStyle`
-  html, body, #root {
-    height: 100%;
-  }
-
-  body {
-    background: #000000;
-    font-family: Arial;
-  }
-`;
-
-const StyledGroupButtons = styled(GroupButtons)`
-  position: absolute;
-  bottom: 45px;
-  left: 10px;
-  z-index: 10;
-`;
-
 export const App = () => {
-  const { range, setRange, data } = useData();
+  const { range, setRange, data } = useData(ERange.MAX);
 
   const _onChangeRange = useCallback(
     (value) => {
@@ -74,11 +39,7 @@ export const App = () => {
       <GlobalStyling />
       <Wrapper>
         <Content>
-          <StyledGroupButtons
-            active={range}
-            buttons={RANGE_OPTIONS}
-            onChange={_onChangeRange}
-          />
+          <RangeButtons active={range} onChange={_onChangeRange} />
           <Chart header="AAPL Stocks" data={data} />
         </Content>
       </Wrapper>

@@ -35,8 +35,8 @@ const getRangeData = (range: ERange): IData[] => {
 /**
  * Returns normalized dataset for specified date range
  */
-export const useData = () => {
-  const [range, setRange] = useState(ERange.WEEK);
+export const useData = (defaultRnage: ERange) => {
+  const [range, setRange] = useState<ERange>(defaultRnage);
 
   const data = useMemo(() => {
     const raw = getRangeData(range);

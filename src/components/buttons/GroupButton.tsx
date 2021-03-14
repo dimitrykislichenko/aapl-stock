@@ -2,12 +2,12 @@ import React from 'react';
 import styled from 'styled-components';
 import { Button } from './Button';
 
-interface IButton {
+export interface IButton {
   name: string | number;
   label: string;
 }
 
-interface IGroupButtonsProps {
+export interface IGroupButtonsProps {
   className?: string;
   active?: string | number;
   buttons: IButton[];
