@@ -1,4 +1,4 @@
-export default [
+const data = [
   {
     Date: 1483390800000,
     Open: 113.97,
@@ -1962,3 +1962,5 @@ export default [
     OpenInt: 0,
   },
 ];
+
+export default data;
